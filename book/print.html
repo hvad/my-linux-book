@@ -1,0 +1,1115 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Linux and tips book</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-651d167c.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-e4f2747f.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux and tips book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This book is a Quick Reference Guide born from years of hands-on experience in System Administration.
+It isn’t a textbook; it’s a collection of the “essentials” I use every day to keep servers running and environments stable.</p>
+<h2 id="why-this-guide"><a class="header" href="#why-this-guide">Why This Guide?</a></h2>
+<p>In the heat of a production issue, you don’t need a 500-page manual. You need the right command,
+the correct file path, and the logic behind the fix.</p>
+<p><strong>Practical First:</strong> Every entry is based on real-world SysAdmin workflows.</p>
+<p><strong>Daily Utility:</strong> Designed to be kept open in a tab while you work.</p>
+<p><strong>No Fluff:</strong> Only the configurations, commands, and shortcuts that actually matter.</p>
+<h2 id="how-to-use-this-reference"><a class="header" href="#how-to-use-this-reference">How to Use This Reference</a></h2>
+<p>Use the search bar (S) or the sidebar to quickly find what you need. Whether you’re troubleshooting permissions,
+managing services, or debugging a network, this guide is built to get you back to the terminal as fast as possible.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-basic"><a class="header" href="#linux-basic">Linux basic</a></h1>
+<p>To manage a Linux system efficiently, you only need to understand three fundamental pillars.</p>
+<p>These govern almost every interaction you will have with the server.</p>
+<ol>
+<li>Everything is a File</li>
+</ol>
+<p>In Linux, almost everything from a simple text document to your hard drive and even your
+CPU is represented as a file.</p>
+<ul>
+<li>
+<p>Hardware? Represented as files in /dev.</p>
+</li>
+<li>
+<p>System Settings? Managed via text files in /etc.</p>
+</li>
+<li>
+<p>Kernel Info? Accessed via files in /proc.</p>
+</li>
+</ul>
+<p>SysAdmin Tip: Because everything is a file, you can use the same tools (cat, grep, vi)
+to configure a service as you do to read a note.</p>
+<ol start="2">
+<li>The File System Hierarchy (FHS)Linux does not use drive letters (C:, D:).</li>
+</ol>
+<p>Everything exists under the Root directory (/).</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Directory</th><th style="text-align: left">Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left">/etc</td><td style="text-align: left">Configuration. Where you edit service settings (e.g., ssh, httpd).</td></tr>
+<tr><td style="text-align: left">/var/log</td><td style="text-align: left">Logs. The first place to look when something breaks.</td></tr>
+<tr><td style="text-align: left">/home</td><td style="text-align: left">Users. Where personal files and local configs reside.</td></tr>
+<tr><td style="text-align: left">/tmp</td><td style="text-align: left">Temporary. Files here are usually cleared on reboot.</td></tr>
+<tr><td style="text-align: left">/root</td><td style="text-align: left">The God User. The home directory for the system administrator.</td></tr>
+</tbody>
+</table>
+</div>
+<ol start="3">
+<li>The Power of the Pipe (|) Linux is built on small, modular tools that do one thing well.
+You combine them using the “Pipe.” The output of one command becomes the input of the next.</li>
+</ol>
+<p>Example:</p>
+<pre><code class="language-Bash">history | grep "ssh"
+</code></pre>
+<p>This doesn’t just show your history; it filters it instantly to find every time you used SSH.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="what-is-linux-"><a class="header" href="#what-is-linux-">What is Linux ?</a></h1>
+<p>From a technical standpoint, Linux is a Kernel—the core software that manages
+the communication between your hardware (CPU, memory, storage) and your applications.</p>
+<p>However, in the daily life of a SysAdmin, “Linux” refers to the entire ecosystem of
+open-source tools that run on top of that kernel to create a functional Operating System.</p>
+<p>The 3 Layers of a Linux System:</p>
+<ul>
+<li>
+<p><strong>The Kernel:</strong> The invisible engine. It handles memory management, file systems, and hardware drivers.</p>
+</li>
+<li>
+<p><strong>The Shell:</strong> Your primary interface. Whether it’s bash or zsh, the shell interprets your
+commands and passes them to the kernel.</p>
+</li>
+<li>
+<p><strong>The Distribution</strong>: A packaged version of Linux. Since the kernel is open-source,
+different organizations bundle it with different tools, package managers, and desktop environments.</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-system-hierarchy"><a class="header" href="#file-system-hierarchy">File system hierarchy</a></h1>
+<p>In Linux, the file system doesn’t use drive letters (like <code>C:</code> or <code>D:</code>).
+Instead, everything is organized into a single tree structure starting from
+the <strong>Root</strong> directory, represented by a forward slash <code>/</code>.</p>
+<p>For a SysAdmin, knowing this map is essential for locating configuration files, logs, and binaries quickly.</p>
+<h2 id="key-directories-reference"><a class="header" href="#key-directories-reference">Key Directories Reference</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Directory</th><th style="text-align: left">Name</th><th style="text-align: left">Purpose (The SysAdmin View)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>/</code></td><td style="text-align: left"><strong>Root</strong></td><td style="text-align: left">The base of the entire file system.</td></tr>
+<tr><td style="text-align: left"><code>/bin</code></td><td style="text-align: left"><strong>Binaries</strong></td><td style="text-align: left">Essential command binaries (e.g., <code>ls</code>, <code>cp</code>, <code>grep</code>).</td></tr>
+<tr><td style="text-align: left"><code>/boot</code></td><td style="text-align: left"><strong>Boot</strong></td><td style="text-align: left">Files needed to boot the system (Kernel, GRUB).</td></tr>
+<tr><td style="text-align: left"><code>/dev</code></td><td style="text-align: left"><strong>Devices</strong></td><td style="text-align: left">Hardware representation (e.g., <code>/dev/sda</code> for a disk).</td></tr>
+<tr><td style="text-align: left"><code>/etc</code></td><td style="text-align: left"><strong>Etc</strong></td><td style="text-align: left"><strong>The Config Hub.</strong> System-wide configuration files live here.</td></tr>
+<tr><td style="text-align: left"><code>/home</code></td><td style="text-align: left"><strong>Home</strong></td><td style="text-align: left">Personal directories for users (e.g., <code>/home/john</code>).</td></tr>
+<tr><td style="text-align: left"><code>/lib</code></td><td style="text-align: left"><strong>Libraries</strong></td><td style="text-align: left">Shared libraries essential for the binaries in <code>/bin</code>.</td></tr>
+<tr><td style="text-align: left"><code>/media</code></td><td style="text-align: left"><strong>Media</strong></td><td style="text-align: left">Mount point for removable media (USB sticks, CDs).</td></tr>
+<tr><td style="text-align: left"><code>/mnt</code></td><td style="text-align: left"><strong>Mount</strong></td><td style="text-align: left">Temporary mount point for filesystems.</td></tr>
+<tr><td style="text-align: left"><code>/opt</code></td><td style="text-align: left"><strong>Optional</strong></td><td style="text-align: left">Add-on software packages (manually installed apps).</td></tr>
+<tr><td style="text-align: left"><code>/proc</code></td><td style="text-align: left"><strong>Processes</strong></td><td style="text-align: left">Virtual filesystem providing kernel and process info.</td></tr>
+<tr><td style="text-align: left"><code>/root</code></td><td style="text-align: left"><strong>Root Home</strong></td><td style="text-align: left">The home directory for the <code>root</code> user (superuser).</td></tr>
+<tr><td style="text-align: left"><code>/run</code></td><td style="text-align: left"><strong>Run</strong></td><td style="text-align: left">Runtime data (IDs, sockets) since the last boot.</td></tr>
+<tr><td style="text-align: left"><code>/sbin</code></td><td style="text-align: left"><strong>Sys Binaries</strong></td><td style="text-align: left">Essential binaries for system administration (e.g., <code>iptables</code>).</td></tr>
+<tr><td style="text-align: left"><code>/tmp</code></td><td style="text-align: left"><strong>Temporary</strong></td><td style="text-align: left">Temporary files (often cleared on reboot).</td></tr>
+<tr><td style="text-align: left"><code>/usr</code></td><td style="text-align: left"><strong>User</strong></td><td style="text-align: left">User programs, libraries, and documentation.</td></tr>
+<tr><td style="text-align: left"><code>/var</code></td><td style="text-align: left"><strong>Variable</strong></td><td style="text-align: left">Files that change frequently, like <strong>logs</strong> (<code>/var/log</code>).</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="important-paths-for-daily-work"><a class="header" href="#important-paths-for-daily-work">Important Paths for Daily Work</a></h2>
+<ul>
+<li><strong>Configuring services:</strong> Always look in <code>/etc/</code>. For example, SSH config is at <code>/etc/ssh/sshd_config</code>.</li>
+<li><strong>Checking errors:</strong> Your best friend is <code>/var/log/</code>. Check <code>syslog</code> or <code>journald</code> here.</li>
+<li><strong>Checking System Stats:</strong> Browse <code>/proc/meminfo</code> or <code>/proc/cpuinfo</code> to see hardware specs directly from the kernel.</li>
+<li><strong>Third-party Apps:</strong> If you install something manually (like a specific database version), it often lands in <code>/opt</code>.</li>
+</ul>
+<p><strong>Admin’s Note:</strong> If you see a directory named <code>sbin</code> (System Binaries), it usually contains
+commands that require <code>sudo</code> or root privileges to execute, unlike the regular <code>bin</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="basic-commands-ls-cd-pwd"><a class="header" href="#basic-commands-ls-cd-pwd">Basic Commands (ls, cd, pwd)</a></h1>
+<p>In your daily SysAdmin life, these three commands are your “eyes and legs.”
+You will use them thousands of times to navigate servers.</p>
+<p>Here is the quick reference for <strong>Navigation Basics</strong>.</p>
+<h2 id="navigation-pwd-ls-and-cd"><a class="header" href="#navigation-pwd-ls-and-cd">Navigation: <code>pwd</code>, <code>ls</code>, and <code>cd</code></a></h2>
+<h3 id="1-pwd-print-working-directory"><a class="header" href="#1-pwd-print-working-directory">1. <code>pwd</code> (Print Working Directory)</a></h3>
+<p>When you are deep in a nested directory structure, it’s easy to get lost.
+<code>pwd</code> tells you exactly where you are located.</p>
+<ul>
+<li><strong>Usage:</strong> <code>pwd</code></li>
+<li><strong>Why it matters:</strong> Always run this before executing a destructive command
+like <code>rm -rf *</code> to ensure you are in the right place.</li>
+</ul>
+<h3 id="2-ls-list"><a class="header" href="#2-ls-list">2. <code>ls</code> (List)</a></h3>
+<p>This command shows you what is inside a directory. As an admin, you rarely use <code>ls</code> alone
+you use <strong>flags</strong> to see the “truth” of the filesystem.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Command</th><th style="text-align: left">Result</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>ls</code></td><td style="text-align: left">Basic list of visible files.</td></tr>
+<tr><td style="text-align: left"><code>ls -l</code></td><td style="text-align: left"><strong>Long format.</strong> Shows permissions, owner, size, and last modified date.</td></tr>
+<tr><td style="text-align: left"><code>ls -a</code></td><td style="text-align: left"><strong>All files.</strong> Shows hidden files (those starting with a <code>.</code>), like <code>.bashrc</code>.</td></tr>
+<tr><td style="text-align: left"><code>ls -lh</code></td><td style="text-align: left"><strong>Human Readable.</strong> Shows file sizes in KB, MB, or GB instead of bytes.</td></tr>
+<tr><td style="text-align: left"><code>ls -t</code></td><td style="text-align: left"><strong>Time.</strong> Sorts files by newest first (great for finding recent logs).</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>The “Admin Favorite”:</strong></p>
+<pre><code class="language-bash">ls -altr
+</code></pre>
+<p><em>This lists <strong>a</strong>ll files in <strong>l</strong>ong format, sorted by <strong>t</strong>ime, in <strong>r</strong>everse (newest files appear at the bottom of your screen).</em></p>
+<h3 id="3-cd-change-directory"><a class="header" href="#3-cd-change-directory">3. <code>cd</code> (Change Directory)</a></h3>
+<p>Moving between folders. Mastering <code>cd</code> is about using shortcuts to avoid typing long paths.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Command</th><th style="text-align: left">Destination</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>cd /etc</code></td><td style="text-align: left">Move to an <strong>absolute path</strong> (starts from root <code>/</code>).</td></tr>
+<tr><td style="text-align: left"><code>cd ssh</code></td><td style="text-align: left">Move to a <strong>relative path</strong> (inside your current folder).</td></tr>
+<tr><td style="text-align: left"><code>cd ..</code></td><td style="text-align: left">Move <strong>one level up</strong> (to the parent directory).</td></tr>
+<tr><td style="text-align: left"><code>cd ~</code></td><td style="text-align: left">Go straight to your <strong>Home</strong> directory.</td></tr>
+<tr><td style="text-align: left"><code>cd -</code></td><td style="text-align: left">Go back to the <strong>previous directory</strong> you were in (toggle).</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="tips-for-speed"><a class="header" href="#tips-for-speed">Tips for Speed</a></h3>
+<ul>
+<li><strong>Tab Completion:</strong> Never type a full directory name. Type the first few letters and hit <code>Tab</code>.
+If it doesn’t complete, you either made a typo or there are multiple matches (hit <code>Tab</code> twice to see them).</li>
+<li><strong>Clear the noise:</strong> If your terminal gets too cluttered with <code>ls</code> output, use the shortcut <code>Ctrl + L</code>
+to clear the screen without losing your command history.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-command-line"><a class="header" href="#linux-command-line">Linux Command Line</a></h1>
+<p>For a System Administrator, the command line is not an outdated tool
+it is the most powerful interface ever created. It allows for <strong>precision, automation,
+and speed</strong> that a Graphical User Interface (GUI) simply cannot match.</p>
+<h2 id="1-why-the-cli-is-the-admins-choice"><a class="header" href="#1-why-the-cli-is-the-admins-choice">1. Why the CLI is the Admin’s Choice</a></h2>
+<ul>
+<li><strong>Remote Access:</strong> You can manage a server across the globe over a low-bandwidth SSH connection.</li>
+<li><strong>Automation:</strong> Anything you can type once, you can put into a script and run a million times.</li>
+<li><strong>Resource Efficiency:</strong> Servers don’t waste RAM or CPU rendering windows and icons; every cycle goes to your applications.</li>
+</ul>
+<h2 id="2-anatomy-of-a-command"><a class="header" href="#2-anatomy-of-a-command">2. Anatomy of a Command</a></h2>
+<p>Almost every Linux command follows a standard syntax:</p>
+<p><code>command [options] [arguments]</code></p>
+<ul>
+<li><strong>Command:</strong> The name of the tool (e.g., <code>ls</code>).</li>
+<li><strong>Options (Flags):</strong> Modify how the command works (e.g., <code>-l</code> for long format). These usually start with a dash <code>-</code>.</li>
+<li><strong>Arguments:</strong> The target of the command (e.g., <code>/etc/ssh</code>).</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="language-bash">ls -lh /var/log
+</code></pre>
+<ul>
+<li><code>ls</code> is the command.</li>
+<li><code>-lh</code> are the options (long format, human-readable).</li>
+<li><code>/var/log</code> is the argument (the directory we want to see).</li>
+</ul>
+<h2 id="3-essential-survival-shortcuts"><a class="header" href="#3-essential-survival-shortcuts">3. Essential “Survival” Shortcuts</a></h2>
+<p>Master these to move faster than anyone using a mouse:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Shortcut</th><th style="text-align: left">Function</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong><code>Tab</code></strong></td><td style="text-align: left"><strong>Auto-completion.</strong> Type <code>cd /e</code> then <code>Tab</code> to get <code>cd /etc/</code>.</td></tr>
+<tr><td style="text-align: left"><strong><code>Up / Down</code></strong></td><td style="text-align: left">Scroll through your command history.</td></tr>
+<tr><td style="text-align: left"><strong><code>Ctrl + R</code></strong></td><td style="text-align: left"><strong>Reverse search.</strong> Type a keyword to find a command you ran yesterday.</td></tr>
+<tr><td style="text-align: left"><strong><code>Ctrl + C</code></strong></td><td style="text-align: left"><strong>Interrupt.</strong> Stop a command that is stuck or taking too long.</td></tr>
+<tr><td style="text-align: left"><strong><code>Ctrl + Z</code></strong></td><td style="text-align: left"><strong>Suspend.</strong> Pause a command and send it to the background.</td></tr>
+<tr><td style="text-align: left"><strong><code>Ctrl + D</code></strong></td><td style="text-align: left"><strong>Exit.</strong> Closes the current terminal session (same as <code>exit</code>).</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-getting-help-the-manual"><a class="header" href="#4-getting-help-the-manual">4. Getting Help (The “Manual”)</a></h2>
+<p>You don’t need to memorize every flag. Use the built-in documentation:</p>
+<ul>
+<li><strong><code>man [command]</code></strong>: Opens the manual page for a command (e.g., <code>man iptables</code>).</li>
+<li><strong><code>[command] --help</code></strong>: Displays a quick summary of options.</li>
+</ul>
+<p><strong>Admin’s Note:</strong> The CLI is a language. At first, you learn “words” (commands). Soon, you learn “sentences” (pipes and redirection). Eventually, you’ll be writing “essays” (automation scripts). Be patient; the terminal rewards those who practice.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="permissions-and-ownership"><a class="header" href="#permissions-and-ownership">Permissions and Ownership</a></h1>
+<p>In Linux, security is built on the concept of <strong>Permissions</strong> and <strong>Ownership</strong>.
+Because Linux is a multi-user system, every file and directory has a specific owner and
+a set of rules defining who can read, write, or execute it.</p>
+<p>As a SysAdmin, mastering this is non-negotiable—incorrect permissions are the #1 cause of
+“Access Denied” errors and security vulnerabilities.</p>
+<h2 id="1-the-three-tiers-of-ownership"><a class="header" href="#1-the-three-tiers-of-ownership">1. The Three Tiers of Ownership</a></h2>
+<p>Every file is assigned to three categories:</p>
+<ol>
+<li><strong>User (u):</strong> The individual who owns the file (usually the creator).</li>
+<li><strong>Group (g):</strong> A collection of users with shared access.</li>
+<li><strong>Others (o):</strong> Everyone else on the system.</li>
+</ol>
+<h2 id="2-the-three-types-of-permissions"><a class="header" href="#2-the-three-types-of-permissions">2. The Three Types of Permissions</a></h2>
+<p>When you run <code>ls -l</code>, you see a string like <code>-rwxr-xr--</code>. Here is what those letters mean:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Permission</th><th style="text-align: left">Symbol</th><th style="text-align: left">Numeric</th><th style="text-align: left">Action on File</th><th style="text-align: left">Action on Directory</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Read</strong></td><td style="text-align: left"><code>r</code></td><td style="text-align: left"><strong>4</strong></td><td style="text-align: left">View file contents.</td><td style="text-align: left">List files inside (<code>ls</code>).</td></tr>
+<tr><td style="text-align: left"><strong>Write</strong></td><td style="text-align: left"><code>w</code></td><td style="text-align: left"><strong>2</strong></td><td style="text-align: left">Modify file contents.</td><td style="text-align: left">Create/Delete files inside.</td></tr>
+<tr><td style="text-align: left"><strong>Execute</strong></td><td style="text-align: left"><code>x</code></td><td style="text-align: left"><strong>1</strong></td><td style="text-align: left">Run as a program/script.</td><td style="text-align: left">Enter the directory (<code>cd</code>).</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="3-managing-ownership-chown"><a class="header" href="#3-managing-ownership-chown">3. Managing Ownership (<code>chown</code>)</a></h2>
+<p>To change who owns a file or which group it belongs to, use <code>chown</code> (Change Owner).</p>
+<ul>
+<li><strong>Change owner:</strong> <code>sudo chown john report.txt</code></li>
+<li><strong>Change owner and group:</strong> <code>sudo chown john:developers report.txt</code></li>
+<li><strong>Recursive (entire folder):</strong> <code>sudo chown -R john:john /var/www/html</code></li>
+</ul>
+<h2 id="4-managing-permissions-chmod"><a class="header" href="#4-managing-permissions-chmod">4. Managing Permissions (<code>chmod</code>)</a></h2>
+<p>To change the rules, use <code>chmod</code> (Change Mode). You can use numbers (Octal) or symbols.</p>
+<h3 id="the-octal-method-fastest"><a class="header" href="#the-octal-method-fastest">The Octal Method (Fastest)</a></h3>
+<p>You add the numbers together for each tier:</p>
+<ul>
+<li><code>7</code> (4+2+1) = Read, Write, and Execute.</li>
+<li><code>6</code> (4+2) = Read and Write.</li>
+<li><code>5</code> (4+1) = Read and Execute.</li>
+<li><code>4</code> = Read only.</li>
+</ul>
+<p><strong>Common Commands:</strong></p>
+<ul>
+<li><code>chmod 755 script.sh</code> → Owner can do everything; Group/Others can only read and execute.</li>
+<li><code>chmod 644 config.txt</code> → Owner can read/write; Group/Others can only read.</li>
+<li><code>chmod 600 private.key</code> → Only the owner can read/write (standard for SSH keys).</li>
+</ul>
+<h3 id="the-symbolic-method-specific"><a class="header" href="#the-symbolic-method-specific">The Symbolic Method (Specific)</a></h3>
+<ul>
+<li><code>chmod +x script.sh</code> (Add <strong>execute</strong> permission for everyone)</li>
+<li><code>chmod u-w file.txt</code> (Remove <strong>write</strong> for the <strong>owner</strong>)</li>
+<li><code>chmod g+s directory/</code> (Set <strong>Group ID</strong> advanced admin trick)</li>
+</ul>
+<hr>
+<h2 id="admins-golden-rules"><a class="header" href="#admins-golden-rules">Admin’s “Golden Rules”</a></h2>
+<ol>
+<li><strong>Principle of Least Privilege:</strong> Never give <code>777</code> (full access to everyone) permissions
+to solve a problem. It’s a massive security risk. Find the specific group that needs access instead.</li>
+<li><strong>The “x” on Directories:</strong> If a user doesn’t have <code>x</code> (execute) permission on a directory,
+they cannot <code>cd</code> into it, even if they have <code>r</code> (read) permission to see the files inside.</li>
+<li><strong>Check yourself:</strong> After changing permissions, always verify with <code>ls -l</code>.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="package-management"><a class="header" href="#package-management">Package Management</a></h1>
+<p>Software management is a cornerstone of system administration. On Linux, we rarely download <code>.exe</code>
+installers from websites; instead, we use <strong>Package Managers</strong> to fetch software from trusted repositories.</p>
+<p>As an admin, you’ll likely work with two main “families”:
+<strong>Debian-based</strong> (using <code>.deb</code> files) and <strong>Red Hat-based</strong> (using <code>.rpm</code> files).</p>
+<h2 id="1-the-low-level-vs-high-level-tools"><a class="header" href="#1-the-low-level-vs-high-level-tools">1. The Low-Level vs. High-Level Tools</a></h2>
+<p>Think of package management in two layers:</p>
+<ul>
+<li><strong>Low-Level Tools (<code>rpm</code>, <code>dpkg</code>):</strong> These handle the actual installation of a local file.
+They do <strong>not</strong> resolve dependencies (if your app needs a library that isn’t installed, these tools will simply fail).</li>
+<li><strong>High-Level Tools (<code>apt</code>, <code>dnf</code>):</strong> These are the “smart” managers. They talk to the internet,
+find the software you want, and automatically download every dependency needed to make it work.</li>
+</ul>
+<h2 id="2-the-apt-family-debian-ubuntu-kali"><a class="header" href="#2-the-apt-family-debian-ubuntu-kali">2. The APT Family (Debian, Ubuntu, Kali)</a></h2>
+<p><strong>APT</strong> (Advanced Package Tool) manages <code>.deb</code> packages. It is known for its speed and human-readable output.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Action</th><th style="text-align: left">Command</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Update repo index</strong></td><td style="text-align: left"><code>sudo apt update</code></td></tr>
+<tr><td style="text-align: left"><strong>Install a package</strong></td><td style="text-align: left"><code>sudo apt install [package]</code></td></tr>
+<tr><td style="text-align: left"><strong>Upgrade all software</strong></td><td style="text-align: left"><code>sudo apt upgrade</code></td></tr>
+<tr><td style="text-align: left"><strong>Search for a package</strong></td><td style="text-align: left"><code>apt search [keyword]</code></td></tr>
+<tr><td style="text-align: left"><strong>Remove (keep configs)</strong></td><td style="text-align: left"><code>sudo apt remove [package]</code></td></tr>
+<tr><td style="text-align: left"><strong>Purge (remove configs)</strong></td><td style="text-align: left"><code>sudo apt purge [package]</code></td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Admin’s Note:</strong> Always run <code>apt update</code> before <code>apt install</code> to ensure you are getting the latest
+version metadata from the servers.</p>
+<h2 id="3-the-dnf-family-rhel-fedora-rocky-alma"><a class="header" href="#3-the-dnf-family-rhel-fedora-rocky-alma">3. The DNF Family (RHEL, Fedora, Rocky, Alma)</a></h2>
+<p><strong>DNF</strong> (Dandified YUM) is the successor to the older <code>yum</code> tool. It manages <code>.rpm</code> packages and is
+highly regarded for its advanced dependency resolution and “history” feature.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Action</th><th style="text-align: left">Command</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Install a package</strong></td><td style="text-align: left"><code>sudo dnf install [package]</code></td></tr>
+<tr><td style="text-align: left"><strong>Upgrade all software</strong></td><td style="text-align: left"><code>sudo dnf upgrade</code></td></tr>
+<tr><td style="text-align: left"><strong>Search for a package</strong></td><td style="text-align: left"><code>dnf search [keyword]</code></td></tr>
+<tr><td style="text-align: left"><strong>Remove a package</strong></td><td style="text-align: left"><code>sudo dnf remove [package]</code></td></tr>
+<tr><td style="text-align: left"><strong>View history</strong></td><td style="text-align: left"><code>dnf history</code></td></tr>
+<tr><td style="text-align: left"><strong>Rollback a change</strong></td><td style="text-align: left"><code>sudo dnf history undo [ID]</code></td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Admin’s Note:</strong> One of DNF’s best features is <code>dnf history</code>. If an update breaks your system,
+you can literally “undo” that specific transaction.</p>
+<h2 id="4-direct-comparison-cheatsheet"><a class="header" href="#4-direct-comparison-cheatsheet">4. Direct Comparison Cheatsheet</a></h2>
+<p>If you are switching between Ubuntu and CentOS/RHEL, use this table to translate your “muscle memory.”</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Task</th><th style="text-align: left"><strong>APT</strong> (Debian/Ubuntu)</th><th style="text-align: left"><strong>DNF</strong> (RHEL/Fedora)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Search</strong></td><td style="text-align: left"><code>apt search [app]</code></td><td style="text-align: left"><code>dnf search [app]</code></td></tr>
+<tr><td style="text-align: left"><strong>Install</strong></td><td style="text-align: left"><code>sudo apt install [app]</code></td><td style="text-align: left"><code>sudo dnf install [app]</code></td></tr>
+<tr><td style="text-align: left"><strong>Update Lists</strong></td><td style="text-align: left"><code>sudo apt update</code></td><td style="text-align: left">(Handled automatically)</td></tr>
+<tr><td style="text-align: left"><strong>Full Upgrade</strong></td><td style="text-align: left"><code>sudo apt upgrade</code></td><td style="text-align: left"><code>sudo dnf upgrade</code></td></tr>
+<tr><td style="text-align: left"><strong>Show Info</strong></td><td style="text-align: left"><code>apt show [app]</code></td><td style="text-align: left"><code>dnf info [app]</code></td></tr>
+<tr><td style="text-align: left"><strong>Clean Cache</strong></td><td style="text-align: left"><code>sudo apt clean</code></td><td style="text-align: left"><code>sudo dnf clean all</code></td></tr>
+<tr><td style="text-align: left"><strong>Find what owns a file</strong></td><td style="text-align: left"><code>dpkg -S /path/to/file</code></td><td style="text-align: left"><code>dnf provides /path/to/file</code></td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="5-when-to-use-rpm-directly"><a class="header" href="#5-when-to-use-rpm-directly">5. When to use <code>rpm</code> directly?</a></h2>
+<p>You use the low-level <code>rpm</code> command when you have a specific <code>.rpm</code> file on your disk that isn’t in a repository.</p>
+<ul>
+<li><strong>Install a local file:</strong> <code>rpm -ivh package.rpm</code></li>
+<li><strong>Query if a package is installed:</strong> <code>rpm -q package_name</code></li>
+<li><strong>Verify integrity:</strong> <code>rpm -V package_name</code> (Check if files have been modified since install).</li>
+</ul>
+<p><strong>Admin’s Warning:</strong> Whenever possible, use <code>dnf install ./package.rpm</code> instead of <code>rpm -i</code>.
+DNF will attempt to find the dependencies online, whereas <code>rpm</code> will simply stop and complain if they are missing.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="text-editing-with-vim"><a class="header" href="#text-editing-with-vim">Text Editing with Vim</a></h1>
+<p>In your daily life as a SysAdmin, <strong>Vim</strong> (Vi IMproved) is an essential skill.
+While <code>nano</code> is friendly for beginners, Vim is available on almost every Linux server in
+existence even in “minimal” installations where other editors aren’t present.</p>
+<p>Vim is a <strong>modal</strong> editor, meaning keys do different things depending on which “mode” you are in.</p>
+<h2 id="1-the-three-essential-modes"><a class="header" href="#1-the-three-essential-modes">1. The Three Essential Modes</a></h2>
+<p>To use Vim effectively, you must understand how to switch between these three states:</p>
+<ul>
+<li><strong>Normal Mode:</strong> The default mode for navigating and deleting text. You cannot type regular text here. (Press <code>Esc</code> to return here).</li>
+<li><strong>Insert Mode:</strong> Used for typing text. (Press <code>i</code> from Normal mode to enter).</li>
+<li><strong>Command Mode:</strong> Used for saving, quitting, and advanced functions. (Type <code>:</code> from Normal mode)</li>
+</ul>
+<h2 id="2-the-survival-commands"><a class="header" href="#2-the-survival-commands">2. The Survival Commands</a></h2>
+<p>If you get stuck in Vim, remember these steps: Press <code>Esc</code> multiple times, then type one of the following:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Command</th><th style="text-align: left">Action</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>:w</code></td><td style="text-align: left"><strong>Write</strong> (Save) the file.</td></tr>
+<tr><td style="text-align: left"><code>:q</code></td><td style="text-align: left"><strong>Quit</strong> the editor.</td></tr>
+<tr><td style="text-align: left"><code>:wq</code></td><td style="text-align: left"><strong>Save and Quit</strong> (The most common way to exit).</td></tr>
+<tr><td style="text-align: left"><code>:q!</code></td><td style="text-align: left"><strong>Force Quit</strong> without saving changes.</td></tr>
+<tr><td style="text-align: left"><code>:set number</code></td><td style="text-align: left">Show line numbers (very helpful for debugging configs).</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-navigation-and-editing-normal-mode"><a class="header" href="#3-navigation-and-editing-normal-mode">3. Navigation and Editing (Normal Mode)</a></h2>
+<p>As an admin, you often need to jump to a specific line or delete a configuration error quickly.
+Use these shortcuts in <strong>Normal Mode</strong>:</p>
+<ul>
+<li><strong><code>x</code></strong>: Delete a single character.</li>
+<li><strong><code>dd</code></strong>: Delete (cut) the <strong>entire line</strong>.</li>
+<li><strong><code>yy</code></strong>: Yank (copy) the current line.</li>
+<li><strong><code>p</code></strong>: Paste the copied/cut line below.</li>
+<li><strong><code>u</code></strong>: Undo the last action.</li>
+<li><strong><code>/keyword</code></strong>: Search for a specific word in the file (Press <code>n</code> to find the next match).</li>
+<li><strong><code>G</code></strong>: Jump to the <strong>bottom</strong> of the file.</li>
+<li><strong><code>gg</code></strong>: Jump to the <strong>top</strong> of the file.</li>
+</ul>
+<h2 id="admins-note-the-vim-is-everywhere-rule"><a class="header" href="#admins-note-the-vim-is-everywhere-rule">Admin’s Note: The “Vim-is-Everywhere” Rule</a></h2>
+<p>You might prefer a GUI editor, but when you are SSH into a broken server that only boots into a
+terminal, <strong>Vim</strong> will be your only way to fix the configuration files.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-system-administration"><a class="header" href="#linux-system-administration">Linux: System Administration</a></h1>
+<p>In your daily workflow, <strong>System Administration</strong> is the art of maintaining a healthy,
+secure, and performant environment. While a regular user cares about the interface, an
+Admin cares about the <strong>plumbing</strong>: the processes, the logs, and the underlying stability of the system.</p>
+<p>This section moves beyond basic commands and into the <strong>lifecycle of a server</strong>.</p>
+<h2 id="the-golden-rule-of-administration"><a class="header" href="#the-golden-rule-of-administration">The “Golden Rule” of Administration</a></h2>
+<p><strong>Always have a way back.</strong> Before editing a critical configuration file in <code>/etc</code>, always create a backup:</p>
+<p><code>cp config_file config_file.bak</code></p>
+<p>This simple habit is the difference between a 5-minute fix and a 5-hour outage.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="users-and-groups"><a class="header" href="#users-and-groups">Users and Groups</a></h1>
+<p>In a multi-user environment like Linux, security and organization rely on <strong>Users</strong> and <strong>Groups</strong>.
+As an administrator, your job is to ensure users have enough access to do their work,
+but not enough to accidentally (or intentionally) damage the system.</p>
+<h2 id="1-types-of-users"><a class="header" href="#1-types-of-users">1. Types of Users</a></h2>
+<p>Every process on Linux is “owned” by a user. There are three main types:</p>
+<ul>
+<li><strong>Root User:</strong> The “Superuser” with UID 0. This user has unrestricted access to the entire system.</li>
+<li><strong>System Users:</strong> Accounts created to run specific services (like <code>www-data</code> for web servers
+or <code>mysql</code> for databases). They usually cannot log in.</li>
+<li><strong>Regular Users:</strong> Real people who log in to use the system. Their UIDs typically start at 1000.</li>
+</ul>
+<h2 id="2-the-power-of-groups"><a class="header" href="#2-the-power-of-groups">2. The Power of Groups</a></h2>
+<p>Groups are collections of users. Instead of giving 10 people permission to a folder individually,
+you create a group, give the group permission, and add the users to it.</p>
+<ul>
+<li><strong>Primary Group:</strong> Every user has exactly one primary group (usually named after themselves).</li>
+<li><strong>Secondary Groups:</strong> Users can belong to many other groups to gain specific access
+(e.g., the <code>sudo</code> group to run admin commands or the <code>docker</code> group to manage containers).</li>
+</ul>
+<h2 id="3-essential-management-commands"><a class="header" href="#3-essential-management-commands">3. Essential Management Commands</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Action</th><th style="text-align: left">Command</th><th style="text-align: left">Admin’s Note</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Create User</strong></td><td style="text-align: left"><code>sudo useradd -m [username]</code></td><td style="text-align: left">Use <code>-m</code> to create their home directory.</td></tr>
+<tr><td style="text-align: left"><strong>Set Password</strong></td><td style="text-align: left"><code>sudo passwd [username]</code></td><td style="text-align: left">Use this to reset forgotten passwords too.</td></tr>
+<tr><td style="text-align: left"><strong>Delete User</strong></td><td style="text-align: left"><code>sudo userdel -r [username]</code></td><td style="text-align: left"><code>-r</code> removes their files—use with caution!</td></tr>
+<tr><td style="text-align: left"><strong>Create Group</strong></td><td style="text-align: left"><code>sudo groupadd [group]</code></td><td style="text-align: left">Keep group names lowercase and simple.</td></tr>
+<tr><td style="text-align: left"><strong>Add User to Group</strong></td><td style="text-align: left"><code>sudo usermod -aG [group] [user]</code></td><td style="text-align: left"><strong>Crucial:</strong> Always use <code>-a</code> (append), or you’ll kick them out of all other groups!</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-where-the-data-lives"><a class="header" href="#4-where-the-data-lives">4. Where the Data Lives</a></h2>
+<p>As a SysAdmin, you should know these three plain-text files:</p>
+<ol>
+<li><strong><code>/etc/passwd</code></strong>: Contains user account information (login name, UID, home directory).</li>
+<li><strong><code>/etc/group</code></strong>: Lists all groups and the users belonging to them.</li>
+<li><strong><code>/etc/shadow</code></strong>: Stores encrypted passwords. Only <code>root</code> can read this file.</li>
+</ol>
+<h3 id="the-sudo-privilege"><a class="header" href="#the-sudo-privilege">The “Sudo” Privilege</a></h3>
+<p>On modern systems, we rarely log in as <code>root</code> directly. Instead, we use <code>sudo</code> (SuperUser DO).</p>
+<ul>
+<li><strong>Audit Trail:</strong> <code>sudo</code> logs every command run, providing a paper trail of who changed what.</li>
+<li><strong>The Sudoers File:</strong> Managed via the <code>visudo</code> command. Never edit <code>/etc/sudoers</code> with a
+normal text editor; <code>visudo</code> checks for syntax errors before saving to prevent you from being locked out of your own system.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="process-management"><a class="header" href="#process-management">Process Management</a></h1>
+<p>Managing processes allows you to keep the system responsive. Think of this as the “Task Manager”
+of the Linux world, but much more granular.</p>
+<h2 id="1-viewing-active-processes"><a class="header" href="#1-viewing-active-processes">1. Viewing Active Processes</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Command</th><th style="text-align: left">Purpose</th><th style="text-align: left">Admin’s Note</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>top</code></td><td style="text-align: left"><strong>Real-time monitor.</strong> The classic way to see CPU/RAM usage.</td><td style="text-align: left">Press <code>q</code> to exit, <code>M</code> to sort by Memory, <code>P</code> to sort by CPU.</td></tr>
+<tr><td style="text-align: left"><code>htop</code></td><td style="text-align: left"><strong>Interactive monitor.</strong> A modern, colorized version of <code>top</code>.</td><td style="text-align: left">Much easier to read. Use the mouse or function keys to kill processes.</td></tr>
+<tr><td style="text-align: left"><code>ps aux</code></td><td style="text-align: left"><strong>Static snapshot.</strong> Shows every process running on the system.</td><td style="text-align: left">Use <code>ps aux</code></td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-identifying-a-process-the-pid"><a class="header" href="#2-identifying-a-process-the-pid">2. Identifying a Process (The PID)</a></h2>
+<p>Every process is assigned a unique <strong>Process ID (PID)</strong>. You need this number to act on the process.</p>
+<ul>
+<li><strong>Find a PID by name:</strong> <code>pgrep httpd</code></li>
+<li><strong>See parent/child relationships:</strong> <code>pstree -p</code></li>
+</ul>
+<h2 id="3-terminating-processes-kill"><a class="header" href="#3-terminating-processes-kill">3. Terminating Processes (<code>kill</code>)</a></h2>
+<p>When a program freezes or consumes too many resources, you need to stop it. We do this by sending “signals.”</p>
+<ul>
+<li>
+<p><strong>The Polite Way (SIGTERM):</strong> <code>kill [PID]</code>
+Asks the program to save its data and close nicely.</p>
+</li>
+<li>
+<p><strong>The Forceful Way (SIGKILL):</strong> <code>kill -9 [PID]</code>
+Immediately kills the process. Use this only if the polite way fails.</p>
+</li>
+<li>
+<p><strong>Kill by Name:</strong> <code>killall firefox</code> or <code>pkill -u [username]</code></p>
+</li>
+</ul>
+<h2 id="4-background-and-foreground"><a class="header" href="#4-background-and-foreground">4. Background and Foreground</a></h2>
+<p>Sometimes you want to run a command but keep using your terminal.</p>
+<ul>
+<li><strong>Run in background:</strong> Add <code>&amp;</code> to the end (e.g., <code>cp -r /large_folder /backup &amp;</code>).</li>
+<li><strong>See background jobs:</strong> Type <code>jobs</code>.</li>
+<li><strong>Bring to foreground:</strong> Type <code>fg %[job_number]</code>.</li>
+</ul>
+<h3 id="admins-summary-table-monitoring-health"><a class="header" href="#admins-summary-table-monitoring-health">Admin’s Summary Table: Monitoring Health</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">If you want to see…</th><th style="text-align: left">Use this command:</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Overall System Uptime</strong></td><td style="text-align: left"><code>uptime</code></td></tr>
+<tr><td style="text-align: left"><strong>Free Memory/RAM</strong></td><td style="text-align: left"><code>free -h</code></td></tr>
+<tr><td style="text-align: left"><strong>Disk Usage</strong></td><td style="text-align: left"><code>df -h</code></td></tr>
+<tr><td style="text-align: left"><strong>Live Disk I/O</strong></td><td style="text-align: left"><code>iostat</code> (or <code>iotop</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Admin’s Note:</strong> If a server is lagging, check the <strong>Load Average</strong> in <code>top</code>. If the numbers are
+significantly higher than the number of CPU cores you have, the system is bottlenecked and you need
+to find the offending PID immediately.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="networking-basics"><a class="header" href="#networking-basics">Networking Basics</a></h1>
+<p>Networking is what allows your Linux system to communicate with the world.
+As a SysAdmin, you need to know how to verify your IP address, check if a remote server
+is alive, and see which services are listening for connections.</p>
+<h2 id="1-identifying-your-interface"><a class="header" href="#1-identifying-your-interface">1. Identifying Your Interface</a></h2>
+<p>In Linux, every network card (Ethernet, Wi-Fi, or Virtual) is an <strong>interface</strong>.</p>
+<ul>
+<li><strong><code>lo</code></strong>: The “Loopback” interface (your own machine, <code>127.0.0.1</code>).</li>
+<li><strong><code>eth0</code></strong> or <strong><code>enp3s0</code></strong> : Typical names for wired Ethernet.</li>
+<li><strong><code>wlan0</code></strong>: Typical name for Wi-Fi.</li>
+</ul>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Task</th><th style="text-align: left">Command</th><th style="text-align: left">Admin’s Note</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Check IP Address</strong></td><td style="text-align: left"><code>ip addr</code></td><td style="text-align: left">Look for the <code>inet</code> line under your active interface.</td></tr>
+<tr><td style="text-align: left"><strong>Check Routing</strong></td><td style="text-align: left"><code>ip route</code></td><td style="text-align: left">Shows your <strong>Default Gateway</strong> (how you get to the internet).</td></tr>
+<tr><td style="text-align: left"><strong>Link Status</strong></td><td style="text-align: left"><code>ip link</code></td><td style="text-align: left">Shows if the “cable” is logically plugged in (<code>UP</code> or <code>DOWN</code>).</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-testing-connectivity"><a class="header" href="#2-testing-connectivity">2. Testing Connectivity</a></h2>
+<p>When a user says “the internet is down,” use these tools to find where the connection is breaking.</p>
+<ul>
+<li><strong><code>ping [IP/Domain]</code></strong>: Sends a tiny packet to see if a host is reachable.</li>
+<li><strong><code>traceroute [Domain]</code></strong>: Shows every “hop” (router) your packet takes to reach its destination.
+Great for finding where a connection is being blocked.</li>
+<li><strong><code>dig [Domain]</code></strong>: The primary tool for troubleshooting <strong>DNS</strong>. It tells you what IP address a domain name points to.</li>
+</ul>
+<h2 id="3-ports-and-listening-services"><a class="header" href="#3-ports-and-listening-services">3. Ports and Listening Services</a></h2>
+<p>A server can run many services (Web, SSH, Database). Each one listens on a specific <strong>Port</strong>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Service</th><th style="text-align: left">Port</th><th style="text-align: left">Protocol</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>SSH</strong></td><td style="text-align: left">22</td><td style="text-align: left">TCP</td></tr>
+<tr><td style="text-align: left"><strong>HTTP</strong></td><td style="text-align: left">80</td><td style="text-align: left">TCP</td></tr>
+<tr><td style="text-align: left"><strong>HTTPS</strong></td><td style="text-align: left">443</td><td style="text-align: left">TCP</td></tr>
+<tr><td style="text-align: left"><strong>DNS</strong></td><td style="text-align: left">53</td><td style="text-align: left">UDP/TCP</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>How to see what’s open:</strong></p>
+<pre><code class="language-bash">sudo ss -tulpn
+</code></pre>
+<ul>
+<li><code>-t</code>: TCP ports</li>
+<li><code>-u</code>: UDP ports</li>
+<li><code>-l</code>: Listening ports</li>
+<li><code>-p</code>: Show the <strong>Process</strong> (program) using the port</li>
+<li><code>-n</code>: Show numeric ports (e.g., <code>80</code> instead of <code>http</code>)</li>
+</ul>
+<h2 id="4-the-old-vs-new-commands"><a class="header" href="#4-the-old-vs-new-commands">4. The “Old vs. New” Commands</a></h2>
+<p>Linux networking commands have transitioned over the years. You might see old tutorials
+using “deprecated” tools. It is best to use the newer <strong>iproute2</strong> suite.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Old Tool (Deprecated)</th><th style="text-align: left">New Tool (Preferred)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>ifconfig</code></td><td style="text-align: left"><code>ip addr</code></td></tr>
+<tr><td style="text-align: left"><code>route</code></td><td style="text-align: left"><code>ip route</code></td></tr>
+<tr><td style="text-align: left"><code>netstat</code></td><td style="text-align: left"><code>ss</code></td></tr>
+<tr><td style="text-align: left"><code>arp</code></td><td style="text-align: left"><code>ip neighbor</code></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="admins-summary-the-cant-connect-checklist"><a class="header" href="#admins-summary-the-cant-connect-checklist">Admin’s Summary: The “Can’t Connect” Checklist</a></h3>
+<ol>
+<li><strong>Can I ping myself?</strong> <code>ping 127.0.0.1</code> (Tests the network stack).</li>
+<li><strong>Can I ping the gateway?</strong> (Tests the local network/cable).</li>
+<li><strong>Can I ping 8.8.8.8?</strong> (Tests the internet connection).</li>
+<li><strong>Is the service listening?</strong> <code>sudo ss -tulpn | grep :80</code>.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="logs-basics"><a class="header" href="#logs-basics">Logs Basics</a></h1>
+<p>In the world of System Administration, logs are your most important diagnostic tool.
+When a service fails, a user can’t log in, or the system behaves strangely,
+the answer is almost always recorded in a log file.</p>
+<h2 id="1-where-the-logs-live"><a class="header" href="#1-where-the-logs-live">1. Where the Logs Live</a></h2>
+<p>Historically, Linux logs were stored as plain text files in <code>/var/log</code>. While many applications
+still do this, modern Linux distributions (using <code>systemd</code>) now use a centralized, binary
+logging system called the <strong>Journal</strong>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Log File / Tool</th><th style="text-align: left">Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>/var/log/syslog</code></td><td style="text-align: left">General system messages (Debian/Ubuntu).</td></tr>
+<tr><td style="text-align: left"><code>/var/log/messages</code></td><td style="text-align: left">General system messages (RHEL/CentOS).</td></tr>
+<tr><td style="text-align: left"><code>/var/log/auth.log</code></td><td style="text-align: left">Authentication logs (logins, <code>sudo</code> usage).</td></tr>
+<tr><td style="text-align: left"><code>/var/log/apache2/</code></td><td style="text-align: left">Web server error and access logs.</td></tr>
+<tr><td style="text-align: left"><strong><code>journalctl</code></strong></td><td style="text-align: left">The command to query the modern system journal.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-mastering-journalctl"><a class="header" href="#2-mastering-journalctl">2. Mastering <code>journalctl</code></a></h2>
+<p>Since the Journal is binary, you cannot read it with <code>cat</code> or <code>vi</code>.
+You must use the <code>journalctl</code> command. As a Quick Reference, these are the only flags you really need:</p>
+<ul>
+<li><strong>View everything (starting with newest):</strong> <code>journalctl -r</code></li>
+<li><strong>Follow logs in real-time:</strong> <code>journalctl -f</code> (Essential for watching a service as it starts).</li>
+<li><strong>Logs for a specific service:</strong> <code>journalctl -u nginx</code></li>
+<li><strong>Logs since the last boot:</strong> <code>journalctl -b</code></li>
+<li><strong>Filter by priority (Errors only):</strong> <code>journalctl -p err..emerg</code></li>
+</ul>
+<h2 id="3-traditional-text-log-tools"><a class="header" href="#3-traditional-text-log-tools">3. Traditional Text Log Tools</a></h2>
+<p>If you are reading text files in <code>/var/log</code>, use these “Admin Classics” to find the needle in the haystack:</p>
+<ul>
+<li><strong><code>tail -f /var/log/auth.log</code></strong>: Watch login attempts as they happen.</li>
+<li><strong><code>grep "error" /var/log/syslog</code></strong>: Filter the log for a specific keyword.</li>
+<li><strong><code>less /var/log/syslog</code></strong>: Open the log in a searchable viewer (Press <code>/</code> to search, <code>q</code> to quit).</li>
+</ul>
+<h2 id="4-log-rotation"><a class="header" href="#4-log-rotation">4. Log Rotation</a></h2>
+<p>Logs grow quickly. To prevent your hard drive from filling up, Linux uses a utility called
+<strong>logrotate</strong>. It automatically compresses old logs (e.g., <code>syslog.1.gz</code>) and eventually deletes the oldest ones.</p>
+<p><strong>Admin’s Note:</strong> If you see a “Disk Full” error, <code>/var/log</code> is the first place you should check.
+Look for massive log files that might indicate a service is stuck in an “error loop,” spamming the disk with messages.</p>
+<h3 id="summary-checklist-for-troubleshooting"><a class="header" href="#summary-checklist-for-troubleshooting">Summary Checklist for Troubleshooting</a></h3>
+<ol>
+<li><strong>Check the service status:</strong> <code>systemctl status [service]</code></li>
+<li><strong>Read the specific service logs:</strong> <code>journalctl -u [service] -e</code> (The <code>-e</code> jumps to the end).</li>
+<li><strong>Check global errors:</strong> <code>journalctl -p 3 -xb</code> (Shows errors from the current boot).</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ssh-basics"><a class="header" href="#ssh-basics">Ssh Basics</a></h1>
+<p>Secure Shell (<strong>SSH</strong>) is the lifeblood of remote Linux administration.
+Because it provides a direct gateway to your server, it is also the primary target for brute-force attacks.</p>
+<p>Hardening your SSH configuration is one of the first tasks you should perform on any new server.</p>
+<h2 id="1-the-configuration-file"><a class="header" href="#1-the-configuration-file">1. The Configuration File</a></h2>
+<p>All SSH server settings are stored in a single text file. Always make a backup before editing:</p>
+<pre><code class="language-bash">sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+sudo nano /etc/ssh/sshd_config
+</code></pre>
+<h2 id="2-critical-hardening-steps"><a class="header" href="#2-critical-hardening-steps">2. Critical Hardening Steps</a></h2>
+<p>To apply these changes, find the corresponding line in <code>sshd_config</code>,
+uncomment it (remove the <code>#</code>), and set the value as shown:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Setting</th><th style="text-align: left">Recommendation</th><th style="text-align: left">Why it matters</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>PermitRootLogin</strong></td><td style="text-align: left"><code>no</code></td><td style="text-align: left">Prevents attackers from targeting the <code>root</code> account directly.</td></tr>
+<tr><td style="text-align: left"><strong>PasswordAuthentication</strong></td><td style="text-align: left"><code>no</code></td><td style="text-align: left"><strong>Crucial.</strong> Forces the use of SSH Keys, making brute-force impossible.</td></tr>
+<tr><td style="text-align: left"><strong>PubkeyAuthentication</strong></td><td style="text-align: left"><code>yes</code></td><td style="text-align: left">Allows login via secure cryptographic keys.</td></tr>
+<tr><td style="text-align: left"><strong>Port</strong></td><td style="text-align: left"><code>2222</code> (example)</td><td style="text-align: left">Changing from default <code>22</code> reduces noise from automated bot scans.</td></tr>
+<tr><td style="text-align: left"><strong>MaxAuthTries</strong></td><td style="text-align: left"><code>3</code></td><td style="text-align: left">Limits the number of failed login attempts per connection.</td></tr>
+<tr><td style="text-align: left"><strong>AllowUsers</strong></td><td style="text-align: left"><code>john admin</code></td><td style="text-align: left">Only specific users listed here can log in via SSH.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-using-ssh-keys-the-pro-way"><a class="header" href="#3-using-ssh-keys-the-pro-way">3. Using SSH Keys (The Pro Way)</a></h2>
+<p>Instead of typing a password, you use a <strong>Public/Private key pair</strong>. The private key stays
+on your laptop; the public key goes on the server.</p>
+<p><strong>Step 1: Generate keys on your local machine</strong></p>
+<pre><code class="language-bash">ssh-keygen -t ed25519
+</code></pre>
+<p><strong>Step 2: Copy the public key to the server</strong></p>
+<pre><code class="language-bash">ssh-copy-id user@server-ip
+</code></pre>
+<h2 id="4-applying-changes"><a class="header" href="#4-applying-changes">4. Applying Changes</a></h2>
+<p>After editing the config file, you <strong>must</strong> restart the service for changes to take effect.</p>
+<p><strong>Warning:</strong> Always keep your current terminal session open while testing the new config in
+a <em>second</em> window. If you made a mistake, you won’t be locked out.</p>
+<pre><code class="language-bash">sudo sshd -t          # Test syntax for errors first
+sudo systemctl restart ssh
+</code></pre>
+<hr>
+<h3 id="admins-note-fail2ban"><a class="header" href="#admins-note-fail2ban">Admin’s Note: Fail2Ban</a></h3>
+<p>Even with a hardened config, bots will still try to connect. I highly recommend installing
+<strong>Fail2Ban</strong>. It monitors your logs and automatically bans any IP address that shows suspicious
+behavior (like 10 failed logins in one minute).</p>
+<pre><code class="language-bash">sudo apt install fail2ban  # Debian/Ubuntu
+sudo dnf install fail2ban  # RHEL/Fedora
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="disk-management"><a class="header" href="#disk-management">Disk Management</a></h1>
+<p>Disk management is a critical skill for any SysAdmin. It involves monitoring how much
+space is left, identifying what is hogging the disk, and managing partitions or logical volumes.</p>
+<p>In Linux, “everything is a file,” and disks are no exception.
+They are represented as device files in the <code>/dev</code> directory.</p>
+<h2 id="1-monitoring-disk-space"><a class="header" href="#1-monitoring-disk-space">1. Monitoring Disk Space</a></h2>
+<p>Before you run out of space and services start crashing, use these two essential commands:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Command</th><th style="text-align: left">Purpose</th><th style="text-align: left">Admin’s Note</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>df -h</code></td><td style="text-align: left"><strong>Disk Free.</strong> Shows total space and usage for all mounted filesystems.</td><td style="text-align: left">The <code>-h</code> (human-readable) flag turns bytes into GB/MB.</td></tr>
+<tr><td style="text-align: left"><code>du -sh [path]</code></td><td style="text-align: left"><strong>Disk Usage.</strong> Shows the size of a specific directory or file.</td><td style="text-align: left">Use <code>du -sh *</code> to see which folder in your current directory is the largest.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-identifying-large-files"><a class="header" href="#2-identifying-large-files">2. Identifying Large Files</a></h2>
+<p>When a disk is at 99%, you need to find the “space-eaters” quickly.
+This command is an admin favorite:</p>
+<pre><code class="language-bash">sudo du -ah /var/log | sort -rh | head -n 10
+</code></pre>
+<p><em>This lists the <strong>top 10 largest files/folders</strong> in <code>/var/log</code>, sorted by size.</em></p>
+<h2 id="3-partitions-and-filesystems"><a class="header" href="#3-partitions-and-filesystems">3. Partitions and Filesystems</a></h2>
+<p>Before a disk can be used, it must be partitioned and formatted with a filesystem (like <strong>Ext4</strong> or <strong>XFS</strong>).</p>
+<ul>
+<li><strong><code>lsblk</code></strong>: Lists all block devices (disks and partitions) in a tree-like format.
+This is the best way to see how your disks are laid out.</li>
+<li><strong><code>fdisk -l</code></strong>: Displays detailed information about partition tables.</li>
+<li><strong><code>blkid</code></strong>: Shows the <strong>UUID</strong> (Universally Unique Identifier) of your partitions—essential for permanent mounting.</li>
+</ul>
+<h2 id="4-mounting-disks"><a class="header" href="#4-mounting-disks">4. Mounting Disks</a></h2>
+<p>Mounting is the process of attaching a formatted partition to a specific directory (a “mount point”).</p>
+<ul>
+<li><strong>Temporary Mount:</strong> <code>sudo mount /dev/sdb1 /mnt/data</code></li>
+<li><strong>Permanent Mount:</strong> You must add an entry to the <strong><code>/etc/fstab</code></strong> file.
+If you make a mistake here, the system may fail to boot, so always test with <code>sudo mount -a</code> after editing.</li>
+</ul>
+<h2 id="5-logical-volume-management-lvm"><a class="header" href="#5-logical-volume-management-lvm">5. Logical Volume Management (LVM)</a></h2>
+<p>Most modern Linux servers use <strong>LVM</strong> instead of simple partitions.
+LVM acts as a flexible layer between the physical disk and the OS, allowing you to:</p>
+<ul>
+<li>Resize partitions while the system is running.</li>
+<li>Combine multiple physical disks into one large virtual pool.</li>
+</ul>
+<p><strong>Basic LVM Workflow:</strong></p>
+<ol>
+<li><strong>PV (Physical Volume):</strong> The raw disk (<code>pvcreate</code>).</li>
+<li><strong>VG (Volume Group):</strong> The pool of space (<code>vgcreate</code>).</li>
+<li><strong>LV (Logical Volume):</strong> The “virtual partition” you format and use (<code>lvcreate</code>).</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-sysadmin-cheatsheet"><a class="header" href="#linux-sysadmin-cheatsheet">Linux: SysAdmin cheatsheet</a></h1>
+<p>Here is the comprehensive <strong>Linux System Administration Quick Reference</strong> compiled into a single structured guide.</p>
+<h2 id="1-introduction-to-sysadmin"><a class="header" href="#1-introduction-to-sysadmin">1. Introduction to SysAdmin</a></h2>
+<p>System Administration is the art of maintaining the “plumbing” of a server.
+Your goals are <strong>Observability</strong> (knowing what’s happening), <strong>managing access</strong> ,
+and <strong>Automation</strong> (reducing manual tasks).</p>
+<p><strong>The Golden Rule:</strong> Always backup a config file before editing it:
+<code>cp file.conf file.conf.bak</code></p>
+<h2 id="2-the-command-line--navigation"><a class="header" href="#2-the-command-line--navigation">2. The Command Line &amp; Navigation</a></h2>
+<p>The CLI is your control center. It consists of the <strong>Terminal</strong> (the window) and
+the <strong>Shell</strong> (the program interpreting commands, like <code>bash</code>).</p>
+<h3 id="essential-navigation"><a class="header" href="#essential-navigation">Essential Navigation</a></h3>
+<ul>
+<li><strong><code>pwd</code></strong>: Print Working Directory (Where am I?).</li>
+<li><strong><code>ls -altr</code></strong>: List all files, long format, sorted by time (newest at bottom).</li>
+<li><strong><code>cd -</code></strong>: Toggle back to the previous directory.</li>
+<li><strong><code>Tab</code></strong>: Auto-complete commands and paths.</li>
+</ul>
+<h2 id="3-permissions-and-ownership"><a class="header" href="#3-permissions-and-ownership">3. Permissions and Ownership</a></h2>
+<p>Linux uses a three-tier permission system: <strong>User (u)</strong>, <strong>Group (g)</strong>, and <strong>Others (o)</strong>.</p>
+<h3 id="the-numeric-method-chmod"><a class="header" href="#the-numeric-method-chmod">The Numeric Method (<code>chmod</code>)</a></h3>
+<ul>
+<li><strong>7 (rwx)</strong>: Full access.</li>
+<li><strong>6 (rw-)</strong>: Read and write.</li>
+<li><strong>5 (r-x)</strong>: Read and execute.</li>
+<li><strong>4 (r–)</strong>: Read only.</li>
+</ul>
+<p><strong>Common Commands:</strong></p>
+<ul>
+<li><code>chown user:group file</code>: Change ownership.</li>
+<li><code>chmod 644 file</code>: Standard for data files.</li>
+<li><code>chmod 755 script.sh</code>: Standard for executable scripts.</li>
+</ul>
+<h2 id="4-package-management"><a class="header" href="#4-package-management">4. Package Management</a></h2>
+<p>Managing software depends on your distribution “family.”</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Task</th><th style="text-align: left"><strong>APT</strong> (Ubuntu/Debian)</th><th style="text-align: left"><strong>DNF</strong> (RHEL/CentOS/Fedora)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Install</strong></td><td style="text-align: left"><code>sudo apt install [pkg]</code></td><td style="text-align: left"><code>sudo dnf install [pkg]</code></td></tr>
+<tr><td style="text-align: left"><strong>Update List</strong></td><td style="text-align: left"><code>sudo apt update</code></td><td style="text-align: left">(Automatic)</td></tr>
+<tr><td style="text-align: left"><strong>Upgrade All</strong></td><td style="text-align: left"><code>sudo apt upgrade</code></td><td style="text-align: left"><code>sudo dnf upgrade</code></td></tr>
+<tr><td style="text-align: left"><strong>Remove</strong></td><td style="text-align: left"><code>sudo apt remove [pkg]</code></td><td style="text-align: left"><code>sudo dnf remove [pkg]</code></td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="5-text-editing-with-vim"><a class="header" href="#5-text-editing-with-vim">5. Text Editing with Vim</a></h2>
+<p>Vim is a modal editor available on almost every server.</p>
+<ul>
+<li><strong>Insert Mode</strong>: Press <code>i</code> to type.</li>
+<li><strong>Normal Mode</strong>: Press <code>Esc</code> to navigate or delete (<code>dd</code> for line, <code>u</code> for undo).</li>
+<li><strong>Command Mode</strong>: Type <code>:</code> from Normal mode.</li>
+<li><code>:wq</code> (Save and quit)</li>
+<li><code>:q!</code> (Quit without saving)</li>
+</ul>
+<p><strong>Pro Tip:</strong> Use the <strong>amix/vimrc</strong> configuration for a powerful setup:</p>
+<pre><code class="language-bash">git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+</code></pre>
+<h2 id="6-users-and-processes"><a class="header" href="#6-users-and-processes">6. Users and Processes</a></h2>
+<ul>
+<li><strong>Users</strong>: Data stored in <code>/etc/passwd</code>. Manage with <code>useradd</code> and <code>usermod</code>.</li>
+<li><strong>Processes</strong>: Programs in execution.</li>
+<li><strong><code>htop</code></strong>: Best interactive monitor for CPU/RAM.</li>
+<li><strong><code>ps aux</code></strong>: Static snapshot of all processes.</li>
+<li><strong><code>kill -9 [PID]</code></strong>: Forcefully stop a process.</li>
+</ul>
+<h2 id="7-networking--logs"><a class="header" href="#7-networking--logs">7. Networking &amp; Logs</a></h2>
+<ul>
+<li><strong>Network</strong>: Use <code>ip addr</code> to check IPs and <code>ss -tulpn</code> to see listening ports.</li>
+<li><strong>Logs</strong>: The modern standard is <code>journalctl</code>.</li>
+<li><code>journalctl -u [service] -f</code>: Follow specific service logs in real-time.</li>
+<li><code>journalctl -p err -b</code>: Show all errors since last boot.</li>
+</ul>
+<h2 id="8-disk-management"><a class="header" href="#8-disk-management">8. Disk Management</a></h2>
+<ul>
+<li><strong><code>df -h</code></strong>: Check overall disk space.</li>
+<li><strong><code>du -sh *</code></strong>: Check size of folders in current directory.</li>
+<li><strong><code>lsblk</code></strong>: View disk partitions and mount points.</li>
+</ul>
+<h3 id="final-troubleshooting-checklist"><a class="header" href="#final-troubleshooting-checklist">Final Troubleshooting Checklist</a></h3>
+<ol>
+<li><strong>Check Resources</strong>: <code>top</code>, <code>free -h</code>, <code>df -h</code>.</li>
+<li><strong>Check Logs</strong>: <code>journalctl -xe</code>.</li>
+<li><strong>Check Service</strong>: <code>systemctl status [name]</code>.</li>
+<li><strong>Check Network</strong>: <code>ss -tulpn</code>.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
